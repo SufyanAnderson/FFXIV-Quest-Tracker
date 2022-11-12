@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+    <title>Final Fantasy XIV Quest Tracker</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="container">
+ 
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+      
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6 hidden">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+            </div>
+        </div>
+        <div class="col-sm-6">
+      
+          <!-- <ul class='hidden' class="messages">
+          <% for(var i=0; i<messages.length; i++) {%>
+            <li class="message">
+              <span><%= messages[i].name %></span>
+              <span><%= messages[i].msg %></span>
+              <span><%= messages[i].typeQuest %></span>
+               <span class="hidden"><%= messages[i].thumbUp %></span>  
+                <span class="hidden"><%= messages[i].thumbDown %></span>   
+                  <span class="hidden"><%= messages[i].thumbUp - messages[i].thumbDown %></span>  
+                  <span class="hidden"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                  <span class="hidden"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                  <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <form method="" action="">
+                  <input  type="text" placeholder="edit" name="edit">
+                  <button class="edit" type="button">Edit</button>
+                </form>
+            </li>
+          <% } %>
+          </ul> -->
+
+          <h2>Add a quest</h2>
+        <% if (user.local.email) { %>
+          <form class="questinputs" action="/messages" method="POST">
+            <label for="typeQuest" class="quest">Quest Type</label>
+              <select name="typeQuest" class="questType">
+                <option value="Main Scenario">Main Scenario</option>
+                <option value="Side Quests">Side Quests</option>
+                <option value="Class, Job, and Role Quests">Class, Job, and Role Quests</option>
+                <option value="Repeatable Quests">Repeatable Quests</option>
+                <option value="Feature Quests">Feature Quests</option>
+              </select>
+                <input type="text" placeholder="Quest Name" name="name">
+                <input type="text" placeholder="Quest Description" name="msg">
+            <button type="Main Quest">Submit Quest</button>
+          </form>
+        </div>
+        <% } %>
+      
+</div>
+
+<section class="questDivider">
+  
+<section class="section1">
+  <h2>Main Scenario Quests</h2>
+   <% for(var i=0; i<messages.length; i++) {%>
+    <% if (messages[i].typeQuest === 'Main Scenario') {  %>
+      <span><%= messages[i].typeQuest %></span>
+        <ul class="messages">
+            <li class="message">
+              <span><%= messages[i].name %></span>
+              <span><%= messages[i].msg %></span>
+              <span><%= messages[i].typeQuest %></span>
+               <span><%= messages[i].item %></span>  
+                <span class="hidden"><%= messages[i].thumbDown %></span>   
+                  <span class="hidden"><%= messages[i].thumbUp - messages[i].thumbDown %></span>  
+                  <span class="hidden"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                  <span class="hidden"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                  <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <form method="" action="">
+                  <input  type="text" placeholder="Add Character Name" name="edit">
+                  <button class="edit" type="button">Add Character</button>
+                </form>
+            </li>
+          </ul>
+    <% } %>    
+  <% } %> 
+ 
+</section>
+
+<section class="section2">
+  <h2>Side Quests</h2>
+  <% for(var i=0; i<messages.length; i++) {%>
+    <% if (messages[i].typeQuest === 'Side Quests') {  %>
+      <span><%= messages[i].typeQuest %></span>
+        <ul class="messages">
+            <li class="message">
+              <span><%= messages[i].name %></span>
+              <span><%= messages[i].msg %></span>
+              <span><%= messages[i].typeQuest %></span>
+               <span class="hidden"><%= messages[i].thumbUp %></span>  
+                <span class="hidden"><%= messages[i].thumbDown %></span>   
+                  <span class="hidden"><%= messages[i].thumbUp - messages[i].thumbDown %></span>  
+                  <span class="hidden"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                  <span class="hidden"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                  <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <form method="" action="">
+                  <input type="text" placeholder="Add Character Name" name="edit">
+                  <button class="edit" type="button">Add Character</button>
+                </form>
+            </li>
+          </ul>
+    <% } %>    
+  <% } %>   
+</section>
+<section class="section3">
+  <h2>Class,Job, and Role Quests</h2>
+   <% for(var i=0; i<messages.length; i++) {%>
+    <% if (messages[i].typeQuest === 'Class, Job, and Role Quests') {  %>
+      <span><%= messages[i].typeQuest %></span>
+        <ul class="messages">
+            <li class="message">
+              <span><%= messages[i].name %></span>
+              <span><%= messages[i].msg %></span>
+              <span><%= messages[i].typeQuest %></span>
+               <span class="hidden"><%= messages[i].thumbUp %></span>  
+                <span class="hidden"><%= messages[i].thumbDown %></span>   
+                  <span class="hidden"><%= messages[i].thumbUp - messages[i].thumbDown %></span>  
+                  <span class="hidden"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                  <span class="hidden"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                  <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <form method="" action="">
+                  <input  type="text" placeholder="edit" name="edit">
+                  <button class="edit" type="button">Edit</button>
+                </form>
+            </li>
+          </ul>
+    <% } %>    
+  <% } %>   
+</section>
+<section class="section4">
+  <h2>Repeatable Quests</h2>
+   <% for(var i=0; i<messages.length; i++) {%>
+    <% if (messages[i].typeQuest === 'Repeatable Quests') {  %>
+      <span><%= messages[i].typeQuest %></span>
+        <ul class="messages">
+            <li class="message">
+              <span><%= messages[i].name %></span>
+              <span><%= messages[i].msg %></span>
+              <span><%= messages[i].typeQuest %></span>
+               <span class="hidden"><%= messages[i].thumbUp %></span>  
+                <span class="hidden"><%= messages[i].thumbDown %></span>   
+                  <span class="hidden"><%= messages[i].thumbUp - messages[i].thumbDown %></span>  
+                  <span class="hidden"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                  <span class="hidden"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                  <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <form method="" action="">
+                  <input  type="text" placeholder="edit" name="edit">
+                  <button class="edit" type="button">Edit</button>
+                </form>
+            </li>
+          </ul>
+    <% } %>    
+  <% } %>   
+</section>
+<section class="section5">
+  <h2>Feature Quests</h2>
+   <% for(var i=0; i<messages.length; i++) {%>
+    <% if (messages[i].typeQuest === 'Feature Quests') {  %>
+      <span><%= messages[i].typeQuest %></span>
+        <ul class="messages">
+            <li class="message">
+              <span><%= messages[i].name %></span>
+              <span><%= messages[i].msg %></span>
+              <span><%= messages[i].typeQuest %></span>
+               <span class="hidden"><%= messages[i].thumbUp %></span>  
+                <span class="hidden"><%= messages[i].thumbDown %></span>   
+                  <span class="hidden"><%= messages[i].thumbUp - messages[i].thumbDown %></span>  
+                  <span class="hidden"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                  <span class="hidden"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                  <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <form method="" action="">
+                  <input  type="text" placeholder="edit" name="edit">
+                  <button class="edit" type="button">Edit</button>
+                </form>
+            </li>
+          </ul>
+    <% } %>    
+  <% } %>   
+</section>
+</section>
+<script src="main.js"></script>
+
+</body>
+</html>
