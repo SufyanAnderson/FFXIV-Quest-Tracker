@@ -1,6 +1,6 @@
 body{
   background-image: url(img/sa.gif);
-  background-size: contain;
+  background-size: cover;
   word-wrap:break-word;
   color: white;
 }
@@ -16,7 +16,7 @@ img{
 }
 
 button {
-	box-shadow:inset 0px 1px 0px 0px #fce2c1;
+		box-shadow:inset 0px 1px 0px 0px #fce2c1;
 	background-color:#d9a05b;
 	border-radius:6px;
 	border:1px solid #eeb44f;
