@@ -1,5 +1,6 @@
 body{
   background-image: url(img/sa.gif);
+  background-repeat: no-repeat;
   background-size: cover;
   word-wrap:break-word;
   color: white;
@@ -53,6 +54,21 @@ button {
   background-color : #020c1b;
   color : white;
   border-radius : 10px;
+}
+
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .open .dropdown-toggle.btn-warning {
+    color: #fff;
+    background-color: #feb752;
+    border-color: #fcbf68;
+}
+.jumbotron h1 {
+    font-size: 63px;
+    color: black;
+}
+
+.jumbotron p {
+    line-height: 1.4;
+    color: black;
 }
 
 .section1:before, .section:after {
@@ -183,4 +199,8 @@ button {
 
 .box {
   height: 1500px;
+}
+
+.jumbotron {
+	opacity
 }
